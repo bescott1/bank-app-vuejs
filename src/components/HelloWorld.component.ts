@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Options, Vue } from 'vue-class-component';
 
 @Options({
@@ -15,7 +16,6 @@ export default class HelloWorld extends Vue {
   }
 
   async retrieveUsers(): Promise<void> {
-    const { data } = await this.axios.get('https://jsonplaceholder.typicode.com/users');
-    this.users = data;
+    this.users = await axios.get('https://jsonplaceholder.typicode.com/users').then(response => response.data);
   }
 }

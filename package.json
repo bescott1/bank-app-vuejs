@@ -7,6 +7,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit --coverage --logHeapUsage --maxWorkers=2 --no-cache",
     "test:unit:watch": "vue-cli-service test:unit --watch --coverage --logHeapUsage --maxWorkers=2 --no-cache",
+    "test:unit:clear-cache": "vue-cli-service test:unit --clear-cache",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint"
   },
@@ -15,7 +16,6 @@
     "core-js": "^3.6.5",
     "cypress": "^8.3.0",
     "vue": "^3.0.0",
-    "vue-axios": "^3.2.5",
     "vue-class-component": "^8.0.0-0"
   },
   "devDependencies": {
