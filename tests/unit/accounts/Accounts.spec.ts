@@ -7,7 +7,11 @@ let wrapper: VueWrapper<AccountsComponent>;
 let component: AccountsComponent;
 
 const wrap = () => {
-  wrapper = shallowMount(AccountsVue);
+  wrapper = shallowMount(AccountsVue, {
+    global: {
+      stubs: ['router-link'],
+    },
+  });
   component = wrapper.vm;
 };
 

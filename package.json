@@ -6,17 +6,18 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit --coverage --logHeapUsage --maxWorkers=2 --no-cache",
-    "test:unit:watch": "vue-cli-service test:unit --watch --coverage --logHeapUsage --maxWorkers=2 --no-cache",
-    "test:unit:clear-cache": "vue-cli-service test:unit --clear-cache",
     "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test:unit:clear-cache": "vue-cli-service test:unit --clear-cache",
+    "test:unit:watch": "vue-cli-service test:unit --watch --coverage --logHeapUsage --maxWorkers=2 --no-cache"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "cypress": "^8.3.0",
     "vue": "^3.0.0",
-    "vue-class-component": "^8.0.0-0"
+    "vue-class-component": "^8.0.0-0",
+    "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",
@@ -25,6 +26,7 @@
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-e2e-cypress": "^4.5.13",
     "@vue/cli-plugin-eslint": "^4.5.13",
+    "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-typescript": "^4.5.13",
     "@vue/cli-plugin-unit-jest": "^4.5.13",
     "@vue/cli-service": "~4.5.0",
