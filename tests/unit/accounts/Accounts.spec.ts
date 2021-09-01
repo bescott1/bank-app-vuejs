@@ -1,7 +1,7 @@
 import { flushPromises, shallowMount, VueWrapper } from '@vue/test-utils';
 import { AccountsComponent, AccountsVue } from '@/components/accounts';
-import { Account } from '@/components/accounts/Account';
-import axios from 'axios';
+import { Account } from '@/components/accounts/account/Account';
+import mockedAccountsAxios from './AccountsAxios.fixture';
 
 let wrapper: VueWrapper<AccountsComponent>;
 let component: AccountsComponent;
@@ -12,25 +12,6 @@ const wrap = () => {
 };
 
 jest.mock('axios');
-const mockedAxios = axios as jest.Mocked<typeof axios>;
-mockedAxios.get.mockImplementation(url => {
-  switch (url) {
-    case 'https://localhost:8080/accounts':
-      return Promise.resolve({
-        data: [
-          {
-            id: 1,
-            firstName: 'Ben',
-            lastName: 'Scott',
-            email: 'bscott@ipponusa.com',
-            balance: 0.0,
-          },
-        ],
-      });
-    default:
-      return Promise.reject(new Error('not found'));
-  }
-});
 
 describe('Accounts', () => {
   it('Should exist', () => {
@@ -43,7 +24,7 @@ describe('Accounts', () => {
 
     await flushPromises();
 
-    expect(mockedAxios.get).toHaveBeenCalledWith('https://localhost:8080/accounts');
+    expect(mockedAccountsAxios.get).toHaveBeenCalledWith('https://localhost:8080/accounts');
     expect(component.accountList).toEqual<Account[]>([
       {
         id: 1,
@@ -54,6 +35,4 @@ describe('Accounts', () => {
       },
     ]);
   });
-
-  it.todo('Should get a single account');
 });

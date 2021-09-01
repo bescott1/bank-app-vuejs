@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Vue } from 'vue-class-component';
-import { Account } from './Account';
+import { Account } from './account/Account';
 
 export default class Accounts extends Vue {
   accountList: Account[] = [];
