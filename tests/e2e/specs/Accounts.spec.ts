@@ -2,7 +2,7 @@ import { dataSelector } from '../utils/DataSelector';
 
 describe('Accounts', () => {
   beforeEach(() => {
-    cy.intercept('**/accounts', {
+    cy.intercept('**/api/accounts', {
       body: [
         {
           id: 1,
@@ -35,7 +35,7 @@ describe('Accounts', () => {
   });
 
   it('Should push to account page', () => {
-    cy.intercept('**/accounts/1', {
+    cy.intercept('**/api/accounts/1', {
       body: {
         id: 1,
         firstName: 'Ben',

@@ -3,7 +3,7 @@ import axios from 'axios';
 const mockedAccountsAxios = axios as jest.Mocked<typeof axios>;
 mockedAccountsAxios.get.mockImplementation(url => {
   switch (url) {
-    case 'https://localhost:8080/accounts':
+    case 'https://localhost:8080/api/accounts':
       return Promise.resolve({
         data: [
           {
@@ -15,7 +15,7 @@ mockedAccountsAxios.get.mockImplementation(url => {
           },
         ],
       });
-    case 'https://localhost:8080/accounts/1':
+    case 'https://localhost:8080/api/accounts/1':
       return Promise.resolve({
         data: {
           id: 1,

@@ -24,7 +24,7 @@ describe('Account', () => {
 
     await flushPromises();
 
-    expect(mockedAccountsAxios.get).toHaveBeenCalledWith('https://localhost:8080/accounts/1');
+    expect(mockedAccountsAxios.get).toHaveBeenCalledWith('https://localhost:8080/api/accounts/1');
     expect(component.account).toEqual<Account>({
       id: 1,
       firstName: 'Ben',
