@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { Vue } from 'vue-class-component';
-import { Account } from './Account';
+import { Account } from '../Account';
 
-export default class Accounts extends Vue {
+export default class AccountDetails extends Vue {
   account: Account = {
     id: 0,
     firstName: '',

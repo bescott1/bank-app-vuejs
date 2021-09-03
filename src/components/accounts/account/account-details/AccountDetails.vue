@@ -11,4 +11,4 @@
   </div>
 </template>
 
-<script lang="ts" src="./Account.component.ts"></script>
+<script lang="ts" src="./AccountDetails.component.ts"></script>

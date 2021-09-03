@@ -1,19 +1,19 @@
 import { flushPromises, shallowMount, VueWrapper } from '@vue/test-utils';
-import { AccountComponent, AccountVue } from '@/components/accounts/account';
+import { AccountDetailsComponent, AccountDetailsVue } from '@/components/accounts/account/account-details';
 import { Account } from '@/components/accounts/account/Account';
-import mockedAccountsAxios from '../AccountsAxios.fixture';
+import mockedAccountsAxios from '../../AccountsAxios.fixture';
 
-let wrapper: VueWrapper<AccountComponent>;
-let component: AccountComponent;
+let wrapper: VueWrapper<AccountDetailsComponent>;
+let component: AccountDetailsComponent;
 
 const wrap = () => {
-  wrapper = shallowMount(AccountVue);
+  wrapper = shallowMount(AccountDetailsVue);
   component = wrapper.vm;
 };
 
 jest.mock('axios');
 
-describe('Account', () => {
+describe('AccountDetails', () => {
   it('Should exist', () => {
     wrap();
     expect(wrapper.exists()).toBe(true);

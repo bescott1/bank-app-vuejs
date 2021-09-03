@@ -14,8 +14,10 @@
       </thead>
       <tbody>
         <tr v-for="(account, index) in accountList" :key="index">
-          <td :data-selector="`accounts-table.row.${index}.action`">
-            <router-link :to="`/accounts/${account.id}`" :data-selector="`account.${account.id}.link`">View Account</router-link>
+          <td>
+            <router-link :to="`/accounts/${account.id}`" :data-selector="`accounts-table.row.${index}.action.view`"
+              >View Account</router-link
+            >
           </td>
           <td :data-selector="`accounts-table.row.${index}.id`">{{ account.id }}</td>
           <td :data-selector="`accounts-table.row.${index}.first-name`">{{ account.firstName }}</td>
@@ -25,6 +27,9 @@
         </tr>
       </tbody>
     </table>
+    <hr />
+    <button v-if="!showAddAccount" @click="showAddAccount = true" data-selector="add-account">Add Account</button>
+    <AccountFormVue v-if="showAddAccount" data-selector="add-account.form" />
   </div>
 </template>
 

@@ -1,9 +1,16 @@
 import axios from 'axios';
-import { Vue } from 'vue-class-component';
+import { Options, Vue } from 'vue-class-component';
 import { Account } from './account/Account';
+import { AccountFormVue } from './account/account-form';
 
+@Options({
+  components: {
+    AccountFormVue,
+  },
+})
 export default class Accounts extends Vue {
   accountList: Account[] = [];
+  showAddAccount = false;
 
   created(): void {
     this.retrieveAccounts();

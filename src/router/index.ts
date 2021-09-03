@@ -1,5 +1,5 @@
 import { AccountsVue } from '@/components/accounts';
-import { AccountVue } from '@/components/accounts/account';
+import { AccountDetailsVue } from '@/components/accounts/account/account-details';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
 const routes: Array<RouteRecordRaw> = [
@@ -11,7 +11,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/accounts/:accountId',
     name: 'Account',
-    component: AccountVue,
+    component: AccountDetailsVue,
     props: route => ({
       accountId: route.params.accountId,
     }),
