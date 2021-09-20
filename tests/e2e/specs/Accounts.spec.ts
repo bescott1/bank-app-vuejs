@@ -35,7 +35,7 @@ describe('Accounts', () => {
   });
 
   it('Should push to view account page', () => {
-    cy.intercept('**/api/accounts/1', {
+    cy.intercept('GET', '**/api/accounts/1', {
       body: {
         id: 1,
         firstName: 'Ben',
@@ -48,10 +48,65 @@ describe('Accounts', () => {
     cy.location().should(loc => expect(loc.pathname).to.eq('/accounts/1'));
   });
 
-  it('Should show add account form', () => {
-    cy.get(dataSelector('add-account.form')).should('not.exist');
+  describe('Add a new account', () => {
+    it('Should show add account form with disabled submit', () => {
+      cy.get(dataSelector('add-account.form')).should('not.exist');
 
-    cy.get(dataSelector('add-account')).click();
-    cy.contains(dataSelector('add-account.form'), 'Add Account Form');
+      cy.get(dataSelector('add-account')).click();
+      cy.contains(dataSelector('add-account.form.first-name.label'), 'First Name');
+      cy.contains(dataSelector('add-account.form.last-name.label'), 'Last Name');
+      cy.contains(dataSelector('add-account.form.email.label'), 'Email');
+      cy.get(dataSelector('add-account.form.submit')).should('be.disabled');
+    });
+
+    it('Should not fill in add account form and see errors', () => {
+      cy.get(dataSelector('add-account')).click();
+      cy.get(dataSelector('add-account.form.first-name.value')).type('Given Name');
+      cy.get(dataSelector('add-account.form.first-name.value')).clear();
+      cy.get(dataSelector('add-account.form.last-name.value')).type('Surname');
+      cy.get(dataSelector('add-account.form.last-name.value')).clear();
+      cy.get(dataSelector('add-account.form.email.value')).type('email@test.com');
+      cy.get(dataSelector('add-account.form.email.value')).clear();
+
+      cy.get(dataSelector('add-account.form.first-name.value')).click();
+
+      cy.contains(dataSelector('add-account.form.first-name.error'), 'First Name is a required field');
+      cy.contains(dataSelector('add-account.form.last-name.error'), 'Last Name is a required field');
+      cy.contains(dataSelector('add-account.form.email.error'), 'Email is a required field');
+    });
+
+    it('Should fill in add account form to enable submit', () => {
+      cy.get(dataSelector('add-account')).click();
+      cy.get(dataSelector('add-account.form.first-name.value')).type('Given Name');
+      cy.get(dataSelector('add-account.form.last-name.value')).type('Surname');
+      cy.get(dataSelector('add-account.form.email.value')).type('email@test.com');
+      cy.get(dataSelector('add-account.form.submit')).should('be.enabled');
+    });
+
+    it('Should submit new account and see it in the list then hide add account section', () => {
+      cy.get(dataSelector('add-account')).click();
+      cy.get(dataSelector('add-account.form.first-name.value')).type('Givenname');
+      cy.get(dataSelector('add-account.form.last-name.value')).type('Surname');
+      cy.get(dataSelector('add-account.form.email.value')).type('email@test.com');
+      cy.intercept('POST', '**/api/accounts', {
+        body: {
+          id: 2,
+          firstName: 'Givenname',
+          lastName: 'Surname',
+          email: 'email@test.com',
+          balance: 0.0,
+        },
+      });
+
+      cy.get(dataSelector('add-account.form.submit')).click();
+
+      cy.contains(dataSelector('accounts-table.row.1.action.view'), 'View Account');
+      cy.contains(dataSelector('accounts-table.row.1.id'), '2');
+      cy.contains(dataSelector('accounts-table.row.1.first-name'), 'Givenname');
+      cy.contains(dataSelector('accounts-table.row.1.last-name'), 'Surname');
+      cy.contains(dataSelector('accounts-table.row.1.email'), 'email@test.com');
+      cy.contains(dataSelector('accounts-table.row.1.balance'), '0');
+      cy.get(dataSelector('add-account.form')).should('not.exist');
+    });
   });
 });

@@ -1,23 +1,36 @@
 import axios from 'axios';
-import { Vue } from 'vue-class-component';
+import { Options, Vue } from 'vue-class-component';
 import { Account } from '../Account';
 import { AccountFormEntry } from './AccountFormEntry';
+import { Field, Form, ErrorMessage } from 'vee-validate';
+import * as Yup from 'yup';
 
+@Options({
+  components: {
+    Field,
+    Form,
+    ErrorMessage,
+  },
+})
 export default class AccountForm extends Vue {
-  createdAccount: Account = {
-    id: 0,
-    firstName: '',
-    lastName: '',
-    email: '',
-    balance: 0.0,
-  };
-  newAccount: AccountFormEntry = {
-    firstName: '',
-    lastName: '',
-    email: '',
-  };
+  schema = Yup.object().shape({
+    firstName: Yup.string()
+      .required()
+      .label('First Name'),
+    lastName: Yup.string()
+      .required()
+      .label('Last Name'),
+    email: Yup.string()
+      .email()
+      .required()
+      .label('Email'),
+  });
 
-  async addAccount(newAccountWithValues: AccountFormEntry): Promise<void> {
-    this.createdAccount = await axios.post('https://localhost:8080/api/accounts', newAccountWithValues).then(response => response.data);
+  async addAccount(values: AccountFormEntry): Promise<void> {
+    if (!values.firstName || !values.lastName || !values.email) {
+      return;
+    }
+    const createdAccount: Account = await axios.post('https://localhost:8080/api/accounts', values).then(response => response.data);
+    this.$emit('createdAccount', createdAccount);
   }
 }

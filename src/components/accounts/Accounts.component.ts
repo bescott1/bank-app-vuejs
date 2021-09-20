@@ -19,4 +19,9 @@ export default class Accounts extends Vue {
   async retrieveAccounts(): Promise<void> {
     this.accountList = await axios.get('https://localhost:8080/api/accounts').then(response => response.data);
   }
+
+  addAccountToList(createdAccount: Account): void {
+    this.accountList.push(createdAccount);
+    this.showAddAccount = false;
+  }
 }

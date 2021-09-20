@@ -39,4 +39,35 @@ describe('Accounts', () => {
       },
     ]);
   });
+
+  it('Should add a newly created account', async () => {
+    wrap();
+
+    await flushPromises();
+    component.addAccountToList({
+      id: 2,
+      firstName: 'Givenname',
+      lastName: 'Surname',
+      email: 'test@example.com',
+      balance: 0.0,
+    });
+
+    expect(component.accountList).toEqual<Account[]>([
+      {
+        id: 1,
+        firstName: 'Ben',
+        lastName: 'Scott',
+        email: 'bscott@ipponusa.com',
+        balance: 0.0,
+      },
+      {
+        id: 2,
+        firstName: 'Givenname',
+        lastName: 'Surname',
+        email: 'test@example.com',
+        balance: 0.0,
+      },
+    ]);
+    expect(component.showAddAccount).toBe(false);
+  });
 });
