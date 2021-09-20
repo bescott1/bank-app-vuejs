@@ -29,7 +29,7 @@
     </table>
     <hr />
     <button v-if="!showAddAccount" @click="showAddAccount = true" data-selector="add-account">Add Account</button>
-    <AccountFormVue v-if="showAddAccount" data-selector="add-account.form" />
+    <AccountFormVue v-if="showAddAccount" @createdAccount="addAccountToList" data-selector="add-account.form" />
   </div>
 </template>
 
