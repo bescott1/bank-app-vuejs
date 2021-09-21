@@ -8,7 +8,6 @@
           <th data-selector="accounts-table.header.id" scope="col">ID</th>
           <th data-selector="accounts-table.header.first-name" scope="col">First Name</th>
           <th data-selector="accounts-table.header.last-name" scope="col">Last Name</th>
-          <th data-selector="accounts-table.header.email" scope="col">Email</th>
           <th data-selector="accounts-table.header.balance" scope="col">Balance</th>
         </tr>
       </thead>
@@ -22,7 +21,6 @@
           <td :data-selector="`accounts-table.row.${index}.id`">{{ account.id }}</td>
           <td :data-selector="`accounts-table.row.${index}.first-name`">{{ account.firstName }}</td>
           <td :data-selector="`accounts-table.row.${index}.last-name`">{{ account.lastName }}</td>
-          <td :data-selector="`accounts-table.row.${index}.email`">{{ account.email }}</td>
           <td :data-selector="`accounts-table.row.${index}.balance`">{{ account.balance }}</td>
         </tr>
       </tbody>

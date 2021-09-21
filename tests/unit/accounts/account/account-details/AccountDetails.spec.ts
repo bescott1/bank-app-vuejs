@@ -29,7 +29,6 @@ describe('AccountDetails', () => {
       id: 1,
       firstName: 'Ben',
       lastName: 'Scott',
-      email: 'bscott@ipponusa.com',
       balance: 0.0,
     });
   });

@@ -7,7 +7,6 @@ describe('Accounts', () => {
         id: 1,
         firstName: 'Ben',
         lastName: 'Scott',
-        email: 'bscott@ipponusa.com',
         balance: 0.0,
       },
     });
@@ -21,7 +20,6 @@ describe('Accounts', () => {
     cy.contains(dataSelector('account.id'), '1');
     cy.contains(dataSelector('account.first-name'), 'Ben');
     cy.contains(dataSelector('account.last-name'), 'Scott');
-    cy.contains(dataSelector('account.email'), 'bscott@ipponusa.com');
     cy.contains(dataSelector('account.balance'), '0');
   });
 });

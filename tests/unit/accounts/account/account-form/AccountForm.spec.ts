@@ -25,7 +25,6 @@ describe('AccountForm', () => {
     await component.addAccount({
       firstName: '',
       lastName: '',
-      email: '',
     });
     await flushPromises();
 
@@ -38,21 +37,18 @@ describe('AccountForm', () => {
     await component.addAccount({
       firstName: 'Ben',
       lastName: 'Scott',
-      email: 'bscott@ipponusa.com',
     });
     await flushPromises();
 
     expect(mockedAccountsAxios.post).toHaveBeenCalledWith('http://localhost:8080/api/accounts', {
       firstName: 'Ben',
       lastName: 'Scott',
-      email: 'bscott@ipponusa.com',
     });
     expect(wrapper.emitted().createdAccount[0]).toEqual<[Account]>([
       {
         id: 1234,
         firstName: 'Ben',
         lastName: 'Scott',
-        email: 'bscott@ipponusa.com',
         balance: 0.0,
       },
     ]);

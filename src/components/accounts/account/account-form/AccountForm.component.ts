@@ -20,14 +20,10 @@ export default class AccountForm extends Vue {
     lastName: Yup.string()
       .required()
       .label('Last Name'),
-    email: Yup.string()
-      .email()
-      .required()
-      .label('Email'),
   });
 
   async addAccount(values: AccountFormEntry): Promise<void> {
-    if (!values.firstName || !values.lastName || !values.email) {
+    if (!values.firstName || !values.lastName) {
       return;
     }
     const createdAccount: Account = await axios.post('http://localhost:8080/api/accounts', values).then(response => response.data);

@@ -34,7 +34,6 @@ describe('Accounts', () => {
         id: 1,
         firstName: 'Ben',
         lastName: 'Scott',
-        email: 'bscott@ipponusa.com',
         balance: 0.0,
       },
     ]);
@@ -48,7 +47,6 @@ describe('Accounts', () => {
       id: 2,
       firstName: 'Givenname',
       lastName: 'Surname',
-      email: 'test@example.com',
       balance: 0.0,
     });
 
@@ -57,14 +55,12 @@ describe('Accounts', () => {
         id: 1,
         firstName: 'Ben',
         lastName: 'Scott',
-        email: 'bscott@ipponusa.com',
         balance: 0.0,
       },
       {
         id: 2,
         firstName: 'Givenname',
         lastName: 'Surname',
-        email: 'test@example.com',
         balance: 0.0,
       },
     ]);

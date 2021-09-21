@@ -11,7 +11,6 @@ mockedAccountsAxios.get.mockImplementation(url => {
             id: 1,
             firstName: 'Ben',
             lastName: 'Scott',
-            email: 'bscott@ipponusa.com',
             balance: 0.0,
           },
         ],
@@ -22,7 +21,6 @@ mockedAccountsAxios.get.mockImplementation(url => {
           id: 1,
           firstName: 'Ben',
           lastName: 'Scott',
-          email: 'bscott@ipponusa.com',
           balance: 0.0,
         },
       });
@@ -37,7 +35,6 @@ mockedAccountsAxios.post.mockImplementation((url, postData: AccountFormEntry) =>
         id: 1234,
         firstName: postData.firstName,
         lastName: postData.lastName,
-        email: postData.email,
         balance: 0.0,
       },
     });

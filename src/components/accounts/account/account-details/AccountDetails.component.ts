@@ -7,7 +7,6 @@ export default class AccountDetails extends Vue {
     id: 0,
     firstName: '',
     lastName: '',
-    email: '',
     balance: 0.0,
   };
 

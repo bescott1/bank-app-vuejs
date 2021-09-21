@@ -8,10 +8,6 @@
     <Field type="text" id="form-last-name" name="lastName" data-selector="add-account.form.last-name.value" />
     <ErrorMessage name="lastName" data-selector="add-account.form.last-name.error" />
     &nbsp;
-    <label for="form-email" data-selector="add-account.form.email.label">Email</label>
-    <Field type="email" id="form-email" name="email" data-selector="add-account.form.email.value" />
-    <ErrorMessage name="email" data-selector="add-account.form.email.error" />
-    &nbsp;
     <input type="submit" value="Submit" :disabled="!(meta.dirty && meta.valid)" data-selector="add-account.form.submit" />
   </Form>
 </template>
