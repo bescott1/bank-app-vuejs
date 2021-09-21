@@ -42,7 +42,7 @@ describe('AccountForm', () => {
     });
     await flushPromises();
 
-    expect(mockedAccountsAxios.post).toHaveBeenCalledWith('https://localhost:8080/api/accounts', {
+    expect(mockedAccountsAxios.post).toHaveBeenCalledWith('http://localhost:8080/api/accounts', {
       firstName: 'Ben',
       lastName: 'Scott',
       email: 'bscott@ipponusa.com',

@@ -4,7 +4,7 @@ import axios from 'axios';
 const mockedAccountsAxios = axios as jest.Mocked<typeof axios>;
 mockedAccountsAxios.get.mockImplementation(url => {
   switch (url) {
-    case 'https://localhost:8080/api/accounts':
+    case 'http://localhost:8080/api/accounts':
       return Promise.resolve({
         data: [
           {
@@ -16,7 +16,7 @@ mockedAccountsAxios.get.mockImplementation(url => {
           },
         ],
       });
-    case 'https://localhost:8080/api/accounts/1':
+    case 'http://localhost:8080/api/accounts/1':
       return Promise.resolve({
         data: {
           id: 1,
@@ -31,7 +31,7 @@ mockedAccountsAxios.get.mockImplementation(url => {
   }
 });
 mockedAccountsAxios.post.mockImplementation((url, postData: AccountFormEntry) => {
-  if (url === 'https://localhost:8080/api/accounts') {
+  if (url === 'http://localhost:8080/api/accounts') {
     return Promise.resolve({
       data: {
         id: 1234,

@@ -30,7 +30,7 @@ export default class AccountForm extends Vue {
     if (!values.firstName || !values.lastName || !values.email) {
       return;
     }
-    const createdAccount: Account = await axios.post('https://localhost:8080/api/accounts', values).then(response => response.data);
+    const createdAccount: Account = await axios.post('http://localhost:8080/api/accounts', values).then(response => response.data);
     this.$emit('createdAccount', createdAccount);
   }
 }

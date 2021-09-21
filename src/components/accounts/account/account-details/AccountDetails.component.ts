@@ -16,6 +16,6 @@ export default class AccountDetails extends Vue {
   }
 
   async retrieveAccount(): Promise<void> {
-    this.account = await axios.get('https://localhost:8080/api/accounts/1').then(response => response.data);
+    this.account = await axios.get('http://localhost:8080/api/accounts/1').then(response => response.data);
   }
 }
