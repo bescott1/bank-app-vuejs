@@ -1,17 +1,16 @@
+import { interceptAccount, interceptGetAccounts, interceptPostAccounts } from '../fixtures/AccountsIntercepts.fixture';
 import { dataSelector } from '../utils/DataSelector';
 
 describe('Accounts', () => {
   beforeEach(() => {
-    cy.intercept('**/api/accounts', {
-      body: [
-        {
-          id: 1,
-          firstName: 'Ben',
-          lastName: 'Scott',
-          balance: 0.0,
-        },
-      ],
-    });
+    interceptGetAccounts([
+      {
+        id: 1,
+        firstName: 'Ben',
+        lastName: 'Scott',
+        balance: 0.0,
+      },
+    ]);
     cy.visit('/');
   });
   it('Should visit the accounts url', () => {
@@ -32,13 +31,11 @@ describe('Accounts', () => {
   });
 
   it('Should push to view account page', () => {
-    cy.intercept('GET', '**/api/accounts/1', {
-      body: {
-        id: 1,
-        firstName: 'Ben',
-        lastName: 'Scott',
-        balance: 0.0,
-      },
+    interceptAccount({
+      id: 1,
+      firstName: 'Ben',
+      lastName: 'Scott',
+      balance: 0.0,
     });
     cy.get(dataSelector('accounts-table.row.0.action.view')).click();
     cy.location().should(loc => expect(loc.pathname).to.eq('/accounts/1'));
@@ -78,13 +75,11 @@ describe('Accounts', () => {
       cy.get(dataSelector('add-account')).click();
       cy.get(dataSelector('add-account.form.first-name.value')).type('Givenname');
       cy.get(dataSelector('add-account.form.last-name.value')).type('Surname');
-      cy.intercept('POST', '**/api/accounts', {
-        body: {
-          id: 2,
-          firstName: 'Givenname',
-          lastName: 'Surname',
-          balance: 0.0,
-        },
+      interceptPostAccounts({
+        id: 2,
+        firstName: 'Givenname',
+        lastName: 'Surname',
+        balance: 0.0,
       });
 
       cy.get(dataSelector('add-account.form.submit')).click();
