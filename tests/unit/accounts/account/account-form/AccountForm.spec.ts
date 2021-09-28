@@ -1,27 +1,19 @@
-import { flushPromises, mount, VueWrapper } from '@vue/test-utils';
-import { AccountFormComponent, AccountFormVue } from '@/components/accounts/account/account-form';
+import { flushPromises, shallowMount } from '@vue/test-utils';
+import { AccountFormVue } from '@/components/accounts/account/account-form';
 import mockedAccountsAxios from '../../AccountsAxios.fixture';
 import { Account } from '@/components/accounts/account/Account';
-
-let wrapper: VueWrapper<AccountFormComponent>;
-let component: AccountFormComponent;
-
-const wrap = () => {
-  wrapper = mount(AccountFormVue);
-  component = wrapper.vm;
-};
 
 jest.mock('axios');
 
 describe('AccountForm', () => {
+  const wrapper = shallowMount(AccountFormVue);
+  const component = wrapper.vm;
+
   it('Should exist with vee-validate setup', async () => {
-    wrap();
     expect(wrapper.exists()).toBe(true);
   });
 
   it('Should not post an empty new account', async () => {
-    wrap();
-
     await component.addAccount({
       firstName: '',
       lastName: '',
@@ -32,8 +24,6 @@ describe('AccountForm', () => {
   });
 
   it('Should post a new account and emit', async () => {
-    wrap();
-
     await component.addAccount({
       firstName: 'Ben',
       lastName: 'Scott',

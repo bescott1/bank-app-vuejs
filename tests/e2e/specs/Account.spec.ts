@@ -1,7 +1,7 @@
 import { interceptAccount } from '../fixtures/AccountsIntercepts.fixture';
 import { dataSelector } from '../utils/DataSelector';
 
-describe('Accounts', () => {
+describe('Account', () => {
   beforeEach(() => {
     interceptAccount({
       id: 1,
