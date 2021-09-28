@@ -17,7 +17,7 @@
     "core-js": "^3.6.5",
     "cypress": "^8.3.0",
     "vee-validate": "^4.4.11",
-    "vue": "^3.0.0",
+    "vue": "^3.2.0",
     "vue-class-component": "^8.0.0-0",
     "vue-router": "^4.0.0-0",
     "yup": "^0.32.9"
