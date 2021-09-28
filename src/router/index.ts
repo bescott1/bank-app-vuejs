@@ -1,4 +1,5 @@
 import { AccountsVue } from '@/components/accounts';
+import { AccountDepositFormVue } from '@/components/accounts/account/account-deposit-form';
 import { AccountDetailsVue } from '@/components/accounts/account/account-details';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
@@ -12,6 +13,14 @@ const routes: Array<RouteRecordRaw> = [
     path: '/accounts/:accountId',
     name: 'Account',
     component: AccountDetailsVue,
+    props: route => ({
+      accountId: route.params.accountId,
+    }),
+  },
+  {
+    path: '/accounts/:accountId/deposit',
+    name: 'AccountDeposit',
+    component: AccountDepositFormVue,
     props: route => ({
       accountId: route.params.accountId,
     }),
