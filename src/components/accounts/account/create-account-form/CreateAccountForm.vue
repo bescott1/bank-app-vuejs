@@ -12,7 +12,7 @@
   </Form>
 </template>
 
-<script lang="ts" src="./AccountForm.component.ts"></script>
+<script lang="ts" src="./CreateAccountForm.component.ts"></script>
 <style>
 input + span {
   display: block;

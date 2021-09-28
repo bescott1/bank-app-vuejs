@@ -1,4 +1,4 @@
-export interface AccountFormEntry {
+export interface CreateAccountFormEntry {
   firstName: string;
   lastName: string;
 }

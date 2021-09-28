@@ -1,4 +1,4 @@
-import { AccountFormEntry } from '@/components/accounts/account/account-form/AccountFormEntry';
+import { CreateAccountFormEntry } from '@/components/accounts/account/create-account-form/CreateAccountFormEntry';
 import axios, { AxiosError } from 'axios';
 
 const mockedAccountsAxios = axios as jest.Mocked<typeof axios>;
@@ -44,7 +44,7 @@ mockedAccountsAxios.get.mockImplementation(url => {
       return Promise.reject(new Error('invalid mock path'));
   }
 });
-mockedAccountsAxios.post.mockImplementation((url, postData: AccountFormEntry) => {
+mockedAccountsAxios.post.mockImplementation((url, postData: CreateAccountFormEntry) => {
   if (url === 'http://localhost:8080/api/accounts') {
     return Promise.resolve({
       status: 200,

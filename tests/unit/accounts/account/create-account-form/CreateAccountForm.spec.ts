@@ -1,12 +1,12 @@
 import { flushPromises, shallowMount } from '@vue/test-utils';
-import { AccountFormVue } from '@/components/accounts/account/account-form';
+import { CreateAccountFormVue } from '@/components/accounts/account/create-account-form';
 import mockedAccountsAxios from '../../AccountsAxios.fixture';
 import { Account } from '@/components/accounts/account/Account';
 
 jest.mock('axios');
 
-describe('AccountForm', () => {
-  const wrapper = shallowMount(AccountFormVue);
+describe('CreateAccountForm', () => {
+  const wrapper = shallowMount(CreateAccountFormVue);
   const component = wrapper.vm;
 
   it('Should exist with vee-validate setup', async () => {

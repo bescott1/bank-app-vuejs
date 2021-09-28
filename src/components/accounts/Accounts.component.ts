@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { Options, Vue } from 'vue-class-component';
 import { Account } from './account/Account';
-import { AccountFormVue } from './account/account-form';
+import { CreateAccountFormVue } from './account/create-account-form';
 
 @Options({
   components: {
-    AccountFormVue,
+    CreateAccountFormVue,
   },
 })
 export default class Accounts extends Vue {

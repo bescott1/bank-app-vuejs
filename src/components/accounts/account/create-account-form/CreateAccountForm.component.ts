@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { Account } from '../Account';
-import { AccountFormEntry } from './AccountFormEntry';
+import { CreateAccountFormEntry } from './CreateAccountFormEntry';
 import { Field, Form, ErrorMessage } from 'vee-validate';
 import * as Yup from 'yup';
 import { defineComponent } from 'vue';
 
-const AccountForm = defineComponent({
+const CreateAccountForm = defineComponent({
   components: {
     Field,
     Form,
@@ -24,7 +24,7 @@ const AccountForm = defineComponent({
     };
   },
   methods: {
-    async addAccount(values: AccountFormEntry): Promise<void> {
+    async addAccount(values: CreateAccountFormEntry): Promise<void> {
       if (!values.firstName || !values.lastName) {
         return;
       }
@@ -34,4 +34,4 @@ const AccountForm = defineComponent({
   },
 });
 
-export default AccountForm;
+export default CreateAccountForm;
