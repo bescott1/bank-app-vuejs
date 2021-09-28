@@ -27,7 +27,7 @@ describe('Accounts', () => {
     cy.contains(dataSelector('accounts-table.row.0.id'), '1');
     cy.contains(dataSelector('accounts-table.row.0.first-name'), 'Ben');
     cy.contains(dataSelector('accounts-table.row.0.last-name'), 'Scott');
-    cy.contains(dataSelector('accounts-table.row.0.balance'), '0');
+    cy.contains(dataSelector('accounts-table.row.0.balance'), '$0.00');
   });
 
   it('Should push to view account page', () => {
@@ -88,7 +88,7 @@ describe('Accounts', () => {
       cy.contains(dataSelector('accounts-table.row.1.id'), '2');
       cy.contains(dataSelector('accounts-table.row.1.first-name'), 'Givenname');
       cy.contains(dataSelector('accounts-table.row.1.last-name'), 'Surname');
-      cy.contains(dataSelector('accounts-table.row.1.balance'), '0');
+      cy.contains(dataSelector('accounts-table.row.1.balance'), '$0.00');
       cy.get(dataSelector('add-account.form')).should('not.exist');
     });
   });

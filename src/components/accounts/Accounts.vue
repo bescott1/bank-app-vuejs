@@ -21,7 +21,7 @@
           <td :data-selector="`accounts-table.row.${index}.id`">{{ account.id }}</td>
           <td :data-selector="`accounts-table.row.${index}.first-name`">{{ account.firstName }}</td>
           <td :data-selector="`accounts-table.row.${index}.last-name`">{{ account.lastName }}</td>
-          <td :data-selector="`accounts-table.row.${index}.balance`">{{ account.balance }}</td>
+          <td :data-selector="`accounts-table.row.${index}.balance`">${{ account.balance.toFixed(2) }}</td>
         </tr>
       </tbody>
     </table>

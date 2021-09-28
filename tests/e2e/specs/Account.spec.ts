@@ -19,7 +19,7 @@ describe('Account', () => {
     cy.contains(dataSelector('account.id'), '1');
     cy.contains(dataSelector('account.first-name'), 'Ben');
     cy.contains(dataSelector('account.last-name'), 'Scott');
-    cy.contains(dataSelector('account.balance'), '0');
+    cy.contains(dataSelector('account.balance'), '$0.00');
   });
 
   it('Should not show account information if nonexistent', () => {
@@ -32,7 +32,7 @@ describe('Account', () => {
     cy.contains(dataSelector('account.id'), '0');
     cy.get(dataSelector('account.first-name')).should('be.empty');
     cy.get(dataSelector('account.last-name')).should('be.empty');
-    cy.contains(dataSelector('account.balance'), '0');
+    cy.contains(dataSelector('account.balance'), '$0.00');
   });
 
   it('Should not show account information if server error', () => {
@@ -45,6 +45,6 @@ describe('Account', () => {
     cy.contains(dataSelector('account.id'), '0');
     cy.get(dataSelector('account.first-name')).should('be.empty');
     cy.get(dataSelector('account.last-name')).should('be.empty');
-    cy.contains(dataSelector('account.balance'), '0');
+    cy.contains(dataSelector('account.balance'), '$0.00');
   });
 });
