@@ -11,6 +11,9 @@ const wrap = (accountId = '1') => {
     props: {
       accountId,
     },
+    global: {
+      stubs: ['router-link'],
+    },
   });
   component = wrapper.vm;
 };
