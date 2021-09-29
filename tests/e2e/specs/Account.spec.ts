@@ -39,9 +39,15 @@ describe('Account', () => {
     cy.intercept(`**/api/accounts/500`, {
       statusCode: 500,
       body: 'Error: Request failed with status code 500',
-    });
+    }).as('server-error');
 
     cy.visit('/accounts/500');
+    cy.wait('@server-error');
+
+    cy.on('uncaught:exception', err => {
+      expect(err.message).to.include('Request failed with status code 500');
+      return false;
+    });
     cy.contains(dataSelector('account.id'), '0');
     cy.get(dataSelector('account.first-name')).should('be.empty');
     cy.get(dataSelector('account.last-name')).should('be.empty');
