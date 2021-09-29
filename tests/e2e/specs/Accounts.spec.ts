@@ -41,6 +41,11 @@ describe('Accounts', () => {
     cy.location().should(loc => expect(loc.pathname).to.eq('/accounts/1'));
   });
 
+  it('Should push to deposit page', () => {
+    cy.get(dataSelector('accounts-table.row.0.action.deposit')).click();
+    cy.location().should(loc => expect(loc.pathname).to.eq('/accounts/1/deposit'));
+  });
+
   describe('Add a new account', () => {
     it('Should show add account form with disabled submit', () => {
       cy.get(dataSelector('add-account.form')).should('not.exist');

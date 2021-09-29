@@ -7,6 +7,10 @@
     </h2>
     <h3 data-selector="account.id">Account ID: {{ account.id }}</h3>
     <h3 data-selector="account.balance">Balance: ${{ account.balance.toFixed(2) }}</h3>
+    <div>
+      <h4>Action</h4>
+      <router-link :to="`/accounts/${account.id}/deposit`" :data-selector="`account.deposit`">Deposit</router-link>
+    </div>
   </div>
 </template>
 

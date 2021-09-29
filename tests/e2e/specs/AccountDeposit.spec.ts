@@ -1,7 +1,7 @@
 import { interceptAccount, interceptAccountDeposit } from '../fixtures/AccountsIntercepts.fixture';
 import { dataSelector } from '../utils/DataSelector';
 
-describe('Add a new account', () => {
+describe('Deposit Amount', () => {
   beforeEach(() => {
     interceptAccountDeposit({
       id: 1,

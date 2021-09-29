@@ -8,7 +8,7 @@ describe('Account', () => {
       firstName: 'Ben',
       lastName: 'Scott',
       balance: 0.0,
-    });
+    }).as('details');
     cy.visit('/accounts/1');
   });
   it('Should visit the account url', () => {
@@ -20,6 +20,12 @@ describe('Account', () => {
     cy.contains(dataSelector('account.first-name'), 'Ben');
     cy.contains(dataSelector('account.last-name'), 'Scott');
     cy.contains(dataSelector('account.balance'), '$0.00');
+  });
+
+  it('Should push to deposit page', () => {
+    cy.wait('@details');
+    cy.get(dataSelector('account.deposit')).click();
+    cy.location().should(loc => expect(loc.pathname).to.eq('/accounts/1/deposit'));
   });
 
   it('Should not show account information if nonexistent', () => {
