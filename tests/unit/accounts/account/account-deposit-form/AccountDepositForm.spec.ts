@@ -5,11 +5,6 @@ import mockedAccountsAxios from '../../AccountsAxios.fixture';
 jest.mock('axios');
 
 describe('AccountDepositForm', () => {
-  const mockRoute = {
-    params: {
-      accountId: '1234',
-    },
-  };
   const mockRouter = {
     push: jest.fn(),
   };
@@ -19,7 +14,6 @@ describe('AccountDepositForm', () => {
     },
     global: {
       mocks: {
-        $route: mockRoute,
         $router: mockRouter,
       },
     },
@@ -31,7 +25,7 @@ describe('AccountDepositForm', () => {
   });
 
   it('Should not post an empty deposit amount', async () => {
-    await component.addAmount({
+    await component.depositAmount({
       amount: 0,
     });
     await flushPromises();
@@ -40,7 +34,7 @@ describe('AccountDepositForm', () => {
   });
 
   it('Should post a deposit amount and push to details', async () => {
-    await component.addAmount({
+    await component.depositAmount({
       amount: 1.11,
     });
     await flushPromises();

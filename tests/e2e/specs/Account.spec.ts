@@ -28,6 +28,12 @@ describe('Account', () => {
     cy.location().should(loc => expect(loc.pathname).to.eq('/accounts/1/deposit'));
   });
 
+  it('Should push to withdrawal page', () => {
+    cy.wait('@details');
+    cy.get(dataSelector('account.withdrawal')).click();
+    cy.location().should(loc => expect(loc.pathname).to.eq('/accounts/1/withdrawal'));
+  });
+
   it('Should not show account information if nonexistent', () => {
     cy.intercept(`**/api/accounts/404`, {
       statusCode: 404,

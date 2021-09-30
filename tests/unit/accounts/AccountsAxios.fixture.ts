@@ -1,4 +1,5 @@
 import { AccountDepositFormEntry } from '@/components/accounts/account/account-deposit-form/AccountDepositFormEntry';
+import { AccountWithdrawalFormEntry } from '@/components/accounts/account/account-withdrawal-form/AccountWithdrawalFormEntry';
 import { CreateAccountFormEntry } from '@/components/accounts/account/create-account-form/CreateAccountFormEntry';
 import axios, { AxiosError } from 'axios';
 
@@ -46,29 +47,40 @@ mockedAccountsAxios.get.mockImplementation(url => {
   }
 });
 mockedAccountsAxios.post.mockImplementation((url, postData: CreateAccountFormEntry | AccountDepositFormEntry) => {
-  if (url === 'http://localhost:8080/api/accounts') {
-    postData = postData as CreateAccountFormEntry;
-    return Promise.resolve({
-      status: 200,
-      data: {
-        id: 1234,
-        firstName: postData.firstName,
-        lastName: postData.lastName,
-        balance: 0.0,
-      },
-    });
-  }
-  if (url === 'http://localhost:8080/api/accounts/1234/deposit') {
-    postData = postData as AccountDepositFormEntry;
-    return Promise.resolve({
-      status: 200,
-      data: {
-        id: 1234,
-        firstName: 'Ben',
-        lastName: 'Scott',
-        balance: postData.amount,
-      },
-    });
+  switch (url) {
+    case 'http://localhost:8080/api/accounts':
+      postData = postData as CreateAccountFormEntry;
+      return Promise.resolve({
+        status: 200,
+        data: {
+          id: 1234,
+          firstName: postData.firstName,
+          lastName: postData.lastName,
+          balance: 0.0,
+        },
+      });
+    case 'http://localhost:8080/api/accounts/1234/deposit':
+      postData = postData as AccountDepositFormEntry;
+      return Promise.resolve({
+        status: 200,
+        data: {
+          id: 1234,
+          firstName: 'Ben',
+          lastName: 'Scott',
+          balance: postData.amount,
+        },
+      });
+    case 'http://localhost:8080/api/accounts/1234/withdrawal':
+      postData = postData as AccountWithdrawalFormEntry;
+      return Promise.resolve({
+        status: 200,
+        data: {
+          id: 1234,
+          firstName: 'Ben',
+          lastName: 'Scott',
+          balance: postData.amount,
+        },
+      });
   }
   return Promise.reject(new Error('invalid mock path'));
 });

@@ -20,3 +20,8 @@ export const interceptAccountDeposit = (body: RestAccount): Cypress.Chainable =>
   cy.intercept(`**/api/accounts/${body.id}/deposit`, {
     body,
   });
+
+export const interceptAccountWithdrawal = (body: RestAccount): Cypress.Chainable =>
+  cy.intercept(`**/api/accounts/${body.id}/withdrawal`, {
+    body,
+  });

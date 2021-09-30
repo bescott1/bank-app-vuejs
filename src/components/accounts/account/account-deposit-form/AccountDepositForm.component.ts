@@ -26,7 +26,7 @@ const AccountDepositForm = defineComponent({
     };
   },
   methods: {
-    async addAmount(values: AccountDepositFormEntry): Promise<void> {
+    async depositAmount(values: AccountDepositFormEntry): Promise<void> {
       if (0.01 > values.amount) {
         return;
       }

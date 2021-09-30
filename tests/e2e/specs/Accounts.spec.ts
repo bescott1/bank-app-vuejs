@@ -46,6 +46,11 @@ describe('Accounts', () => {
     cy.location().should(loc => expect(loc.pathname).to.eq('/accounts/1/deposit'));
   });
 
+  it('Should push to withdrawal page', () => {
+    cy.get(dataSelector('accounts-table.row.0.action.withdrawal')).click();
+    cy.location().should(loc => expect(loc.pathname).to.eq('/accounts/1/withdrawal'));
+  });
+
   describe('Add a new account', () => {
     it('Should show add account form with disabled submit', () => {
       cy.get(dataSelector('add-account.form')).should('not.exist');

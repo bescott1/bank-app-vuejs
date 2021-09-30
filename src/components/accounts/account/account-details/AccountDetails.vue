@@ -10,6 +10,8 @@
     <div>
       <h4>Action</h4>
       <router-link :to="`/accounts/${account.id}/deposit`" :data-selector="`account.deposit`">Deposit</router-link>
+      &nbsp;
+      <router-link :to="`/accounts/${account.id}/withdrawal`" :data-selector="`account.withdrawal`">Withdrawal</router-link>
     </div>
   </div>
 </template>

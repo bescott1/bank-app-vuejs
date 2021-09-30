@@ -21,6 +21,10 @@
             <router-link :to="`/accounts/${account.id}/deposit`" :data-selector="`accounts-table.row.${index}.action.deposit`"
               >Deposit</router-link
             >
+            &nbsp;
+            <router-link :to="`/accounts/${account.id}/withdrawal`" :data-selector="`accounts-table.row.${index}.action.withdrawal`"
+              >Withdrawal</router-link
+            >
           </td>
           <td :data-selector="`accounts-table.row.${index}.id`">{{ account.id }}</td>
           <td :data-selector="`accounts-table.row.${index}.first-name`">{{ account.firstName }}</td>
