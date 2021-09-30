@@ -1,12 +1,12 @@
-import { AccountWithdrawalFormVue } from '@/components/accounts/account/account-withdrawal-form';
+import { AccountWithdrawFormVue } from '@/components/accounts/account/account-withdraw-form';
 import { flushPromises, shallowMount } from '@vue/test-utils';
 import mockedAccountsAxios from '../../AccountsAxios.fixture';
 import router from '@/router';
 
 jest.mock('axios');
 
-describe('AccountWithdrawalForm', () => {
-  const wrapper = shallowMount(AccountWithdrawalFormVue, {
+describe('AccountWithdrawForm', () => {
+  const wrapper = shallowMount(AccountWithdrawFormVue, {
     props: {
       accountId: '1234',
     },
@@ -21,7 +21,7 @@ describe('AccountWithdrawalForm', () => {
     expect(wrapper.exists()).toBe(true);
   });
 
-  it('Should not post an empty withdrawal amount', async () => {
+  it('Should not post an empty withdraw amount', async () => {
     await component.withdrawAmount({
       amount: 0,
     });
@@ -30,13 +30,13 @@ describe('AccountWithdrawalForm', () => {
     expect(mockedAccountsAxios.post).toHaveBeenCalledTimes(0);
   });
 
-  it('Should post a withdrawal amount and push to details', async () => {
+  it('Should post a withdraw amount and push to details', async () => {
     await component.withdrawAmount({
       amount: 3.21,
     });
     await flushPromises();
 
-    expect(mockedAccountsAxios.post).toHaveBeenCalledWith('http://localhost:8080/api/accounts/1234/withdrawal', {
+    expect(mockedAccountsAxios.post).toHaveBeenCalledWith('http://localhost:8080/api/accounts/1234/withdraw', {
       amount: 3.21,
     });
     expect(spyRouterPush).toHaveBeenCalledTimes(1);

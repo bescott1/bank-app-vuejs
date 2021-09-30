@@ -46,9 +46,9 @@ describe('Accounts', () => {
     cy.location().should(loc => expect(loc.pathname).to.eq('/accounts/1/deposit'));
   });
 
-  it('Should push to withdrawal page', () => {
-    cy.get(dataSelector('accounts-table.row.0.action.withdrawal')).click();
-    cy.location().should(loc => expect(loc.pathname).to.eq('/accounts/1/withdrawal'));
+  it('Should push to withdraw page', () => {
+    cy.get(dataSelector('accounts-table.row.0.action.withdraw')).click();
+    cy.location().should(loc => expect(loc.pathname).to.eq('/accounts/1/withdraw'));
   });
 
   it('Should push to transfer page', () => {

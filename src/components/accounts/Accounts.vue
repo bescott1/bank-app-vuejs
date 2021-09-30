@@ -22,8 +22,8 @@
               >Deposit</router-link
             >
             &nbsp;
-            <router-link :to="`/accounts/${account.id}/withdrawal`" :data-selector="`accounts-table.row.${index}.action.withdrawal`"
-              >Withdrawal</router-link
+            <router-link :to="`/accounts/${account.id}/withdraw`" :data-selector="`accounts-table.row.${index}.action.withdraw`"
+              >Withdraw</router-link
             >
             &nbsp;
             <router-link :to="`/accounts/${account.id}/transfer`" :data-selector="`accounts-table.row.${index}.action.transfer`"

@@ -3,9 +3,9 @@ import { Field, Form, ErrorMessage } from 'vee-validate';
 import * as Yup from 'yup';
 import { defineComponent } from 'vue';
 import { useRouter } from 'vue-router';
-import { AccountWithdrawalFormEntry } from './AccountWithdrawalFormEntry';
+import { AccountWithdrawFormEntry } from './AccountWithdrawFormEntry';
 
-const AccountWithdrawalForm = defineComponent({
+const AccountWithdrawForm = defineComponent({
   components: {
     Field,
     Form,
@@ -24,11 +24,11 @@ const AccountWithdrawalForm = defineComponent({
         .label('Amount')
         .test('validDollarAmount', 'Enter a valid amount such as 1.23', number => (number ? Number.isInteger(number * 100) : false)),
     });
-    const withdrawAmount = async (values: AccountWithdrawalFormEntry): Promise<void> => {
+    const withdrawAmount = async (values: AccountWithdrawFormEntry): Promise<void> => {
       if (0.01 > values.amount) {
         return;
       }
-      await axios.post(`http://localhost:8080/api/accounts/${props.accountId}/withdrawal`, values);
+      await axios.post(`http://localhost:8080/api/accounts/${props.accountId}/withdraw`, values);
       router.push(`/accounts/${props.accountId}`);
     };
 
@@ -39,4 +39,4 @@ const AccountWithdrawalForm = defineComponent({
   },
 });
 
-export default AccountWithdrawalForm;
+export default AccountWithdrawForm;

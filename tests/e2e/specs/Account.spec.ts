@@ -28,10 +28,10 @@ describe('Account', () => {
     cy.location().should(loc => expect(loc.pathname).to.eq('/accounts/1/deposit'));
   });
 
-  it('Should push to withdrawal page', () => {
+  it('Should push to withdraw page', () => {
     cy.wait('@details');
-    cy.get(dataSelector('account.withdrawal')).click();
-    cy.location().should(loc => expect(loc.pathname).to.eq('/accounts/1/withdrawal'));
+    cy.get(dataSelector('account.withdraw')).click();
+    cy.location().should(loc => expect(loc.pathname).to.eq('/accounts/1/withdraw'));
   });
 
   it('Should push to transfer page', () => {
