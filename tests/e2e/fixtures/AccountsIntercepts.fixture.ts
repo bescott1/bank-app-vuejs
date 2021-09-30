@@ -25,3 +25,8 @@ export const interceptAccountWithdrawal = (body: RestAccount): Cypress.Chainable
   cy.intercept(`**/api/accounts/${body.id}/withdrawal`, {
     body,
   });
+
+export const interceptAccountTransfer = (body: RestAccount): Cypress.Chainable =>
+  cy.intercept(`**/api/accounts/${body.id}/transfer`, {
+    body,
+  });

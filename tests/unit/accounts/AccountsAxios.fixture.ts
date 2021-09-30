@@ -1,4 +1,5 @@
 import { AccountDepositFormEntry } from '@/components/accounts/account/account-deposit-form/AccountDepositFormEntry';
+import { AccountTransferFormEntry } from '@/components/accounts/account/account-transfer-form/AccountTransferFormEntry';
 import { AccountWithdrawalFormEntry } from '@/components/accounts/account/account-withdrawal-form/AccountWithdrawalFormEntry';
 import { CreateAccountFormEntry } from '@/components/accounts/account/create-account-form/CreateAccountFormEntry';
 import axios, { AxiosError } from 'axios';
@@ -72,6 +73,17 @@ mockedAccountsAxios.post.mockImplementation((url, postData: CreateAccountFormEnt
       });
     case 'http://localhost:8080/api/accounts/1234/withdrawal':
       postData = postData as AccountWithdrawalFormEntry;
+      return Promise.resolve({
+        status: 200,
+        data: {
+          id: 1234,
+          firstName: 'Ben',
+          lastName: 'Scott',
+          balance: postData.amount,
+        },
+      });
+    case 'http://localhost:8080/api/accounts/1234/transfer':
+      postData = postData as AccountTransferFormEntry;
       return Promise.resolve({
         status: 200,
         data: {

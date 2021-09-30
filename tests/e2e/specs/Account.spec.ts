@@ -34,6 +34,12 @@ describe('Account', () => {
     cy.location().should(loc => expect(loc.pathname).to.eq('/accounts/1/withdrawal'));
   });
 
+  it('Should push to transfer page', () => {
+    cy.wait('@details');
+    cy.get(dataSelector('account.transfer')).click();
+    cy.location().should(loc => expect(loc.pathname).to.eq('/accounts/1/transfer'));
+  });
+
   it('Should not show account information if nonexistent', () => {
     cy.intercept(`**/api/accounts/404`, {
       statusCode: 404,

@@ -12,6 +12,8 @@
       <router-link :to="`/accounts/${account.id}/deposit`" :data-selector="`account.deposit`">Deposit</router-link>
       &nbsp;
       <router-link :to="`/accounts/${account.id}/withdrawal`" :data-selector="`account.withdrawal`">Withdrawal</router-link>
+      &nbsp;
+      <router-link :to="`/accounts/${account.id}/transfer`" :data-selector="`account.transfer`">Transfer</router-link>
     </div>
   </div>
 </template>
